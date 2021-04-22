@@ -4,13 +4,14 @@ import { Sprite } from "../Lib/Sprite.js";
 
 
 export class Card extends Node{
-    constructor(src, index, value) {
+    constructor(src, index, value, canClick) {
         super();
         this._src = src;
         this._index = index;
         if(index) this._index = index;
         this._value = value;
         if(value) this._value = value;
+        this._isFlip = false;
         this._width = 150;
         this._height = 150;   
         this._iniImg();
@@ -25,10 +26,18 @@ export class Card extends Node{
         this._src = val;
     }
 
+    get isFlip(){
+        return this._isFlip;
+    }
+
+    set isFlip(value){
+        this._isFlip = value;
+    }
+
     _initCover(){
-        var cover = new Sprite("../img/pokemonBack.jpeg");
+        var cover = new Sprite("../img/pokemonCard.png");
         cover.width = 150;
-        cover.height = 150;
+        cover.height = 200;
         cover.x = 100;
         cover.y = 100;
         cover.elm.node = this;
@@ -39,7 +48,7 @@ export class Card extends Node{
     _iniImg(){
         var img = new Sprite(this.src);
         img.width = 150;
-        img.height = 150;
+        img.height = 200;
         img.x = 100;
         img.y = 100;
         this.addChild(img);

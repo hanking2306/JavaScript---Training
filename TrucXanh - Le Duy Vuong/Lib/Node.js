@@ -7,8 +7,9 @@ export class Node {
         this._height = 0;
         this._active = true;
         this.children = [];
-        this.scaleX = 1;
-        this.scaleY = 1;
+        this._scaleX = 1;
+        this._scale = 1;
+        this._opacity = 1;
     }
 
     get scaleX(){
@@ -17,7 +18,24 @@ export class Node {
 
     set scaleX(value){
         this._scaleX = value;
-        this.elm.style.transform = `scaleX(${this._scaleX})`
+        this.elm.style.transform = `scaleX(${this._scaleX})`;
+    }
+
+    get scale(){
+        return this._scale;
+    }
+
+    set scale(value){
+        this._scale = value;
+        this.elm.style.transform = `scale(${this._scale})`;
+    }
+
+    get opacity(){
+        return this._opacity
+    }
+    set opacity(value){
+        this._opacity = value;
+        this.elm.style.opacity = this._opacity;
     }
 
     _initElement(){
