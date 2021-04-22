@@ -146,31 +146,7 @@ export class Game extends Node {
         countScore.y = 170;
         this.addChild(countScore);
     }
-
-    _elementGameOver() {
-        var gameOver = new Sprite("../img/game-over.jpeg");
-        gameOver.x = 350;
-        gameOver.y = 90;
-        gameOver.width = 950;
-        gameOver.height = 750;
-        gameOver.active = false;
-        this.addChild(gameOver);
-        if (this.score <= 0) {
-            gameOver.active = true;
-
-        }
-        var winner = new Sprite("../img/winner.jpeg");
-        winner.x = 525;
-        winner.y = 200;
-        winner.width = 600;
-        winner.height = 400;
-        winner.active = false;
-        this.addChild(winner);
-        if (this._math === 10) {
-            winner.active = true;
-        }
-    }
-
+    
     _initStartGame() {
         var startGame = new Sprite("../img/StartGame.png");
         startGame.width = 900;
@@ -187,7 +163,32 @@ export class Game extends Node {
         this._elementScore();
         this._elementCard();
         this._elementGameOver();
-        this.onClickCard(evt);
+    }
+
+    _elementGameOver() {
+        var gameOver = new Sprite("../img/game-over.jpeg");
+        gameOver.x = 350;
+        gameOver.y = 120;
+        gameOver.width = 900;
+        gameOver.height = 700;
+        gameOver.active = false;
+        this.addChild(gameOver);
+        if (this.score <= 0) {
+            gameOver.active = true;
+            for(let i = 1; i < 26; i++){
+                this.children[i].active = false;
+            }
+        }
+        var winner = new Sprite("../img/winner.jpeg");
+        winner.x = 525;
+        winner.y = 200;
+        winner.width = 600;
+        winner.height = 400;
+        winner.active = false;
+        this.addChild(winner);
+        if (this._math === 10) {
+            winner.active = true;
+        }
     }
 
     // _initRestartGame(){
