@@ -128,8 +128,8 @@ export class Game extends Node {
     }
 
     flipClose(card1, card2) {
-        gsap.to(card1, { duration: 0.3, scaleX: 1, delay: 1 });
-        gsap.to(card2, { duration: 0.3, scaleX: 0, delay: 1 });
+        gsap.to(card1, { duration: 0.3, scaleX: 1, delay: 0.5 });
+        gsap.to(card2, { duration: 0.3, scaleX: 0, delay: 0.5 });
     }
 
     reSetup(card1, card2) {
