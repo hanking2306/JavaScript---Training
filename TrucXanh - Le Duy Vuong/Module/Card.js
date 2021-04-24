@@ -53,6 +53,7 @@ export class Card extends Node {
 
     _initIndex() {
         var cardIndex = new Label(this._index, 70, "White");
+        cardIndex.elm.node = this;
         if(this._index < 10){
             cardIndex.x = 83;
             cardIndex.y = 60;
