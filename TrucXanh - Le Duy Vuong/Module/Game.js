@@ -159,7 +159,24 @@ export class Game extends Node {
         countScore.y = 400;
         this.addChild(countScore);
     }
-
+    
+    _initStartGame() {
+        const startGame = new Sprite("../img/StartGame.png");
+        this.setUpSprite(startGame, 350, 100, 900, 750, true);
+        this.addChild(startGame);
+        startGame.onClick("mousedown", this.onPlayGame.bind(this));
+    }
+    
+    onPlayGame(evt) {
+        evt.target.style.display = 'none';
+        this._initAudio();
+        this._elementCountScore();
+        this._elementScore();
+        this._elementCard();
+        this._elementGameOver();
+        this._initRestartGame();
+    }
+    
     _elementGameOver() {
         const gameOver = new Sprite("../img/game-over.jpeg");
         this.setUpSprite(gameOver, 350, 90, 950, 750, false);
@@ -178,31 +195,6 @@ export class Game extends Node {
         }
     }
 
-    _initStartGame() {
-        const startGame = new Sprite("../img/StartGame.png");
-        this.setUpSprite(startGame, 350, 100, 900, 750, true);
-        this.addChild(startGame);
-        startGame.onClick("mousedown", this.onPlayGame.bind(this));
-    }
-
-    setUpSprite(sprite, left, top, width, height, active){
-        sprite.x = left;
-        sprite.y = top;
-        sprite.width = width;
-        sprite.height = height;
-        sprite.active = active;
-    }
-
-    onPlayGame(evt) {
-        evt.target.style.display = 'none';
-        this._initAudio();
-        this._elementCountScore();
-        this._elementScore();
-        this._elementCard();
-        this._elementGameOver();
-        this._initRestartGame();
-    }
-
     _initRestartGame() {
         const reStartGame = new Sprite("../img/replay.png");
         this.setUpSprite(reStartGame, 1400, 350, 200, 200, true);
@@ -213,7 +205,15 @@ export class Game extends Node {
     onRePlayGame(evt) {
         location.reload();
     }
-
+    
+    setUpSprite(sprite, left, top, width, height, active){
+        sprite.x = left;
+        sprite.y = top;
+        sprite.width = width;
+        sprite.height = height;
+        sprite.active = active;
+    }
+    
     _initAudio(){
         var startAudio = new Audio("../img/music.mp3");
         startAudio.setAttribute("preload", "auto");
